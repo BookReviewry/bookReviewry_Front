@@ -13,7 +13,7 @@ export default function RootLayout({
       </Head>
       <body>
         <SideNavigation />
-        <section>{children}</section>
+        <main>{children}</main>
       </body>
     </html>
   )
