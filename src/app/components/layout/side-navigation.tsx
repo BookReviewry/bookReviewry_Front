@@ -10,7 +10,7 @@ import {
   ListItemText,
   ThemeProvider,
 } from '@/lib/mui'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const SideNavigation = () => {
   const [selectedIndex, setSelectedIndex] = React.useState(0)
@@ -25,12 +25,14 @@ const SideNavigation = () => {
     setSelectedIndex(index)
   }
 
-  //google login 위한 라이브러리 추가
-  const script = document.createElement('script')
-  script.src = 'https://accounts.google.com/gsi/client'
-  script.async = true
-  script.defer = true
-  document.body.appendChild(script)
+  useEffect(() => {
+    //google login 위한 라이브러리 추가
+    const script = document.createElement('script')
+    script.src = 'https://accounts.google.com/gsi/client'
+    script.async = true
+    script.defer = true
+    document.body.appendChild(script)
+  }, [])
 
   //TODO: 로그인 성공 시 token 받고 처리할 것
   const handleToken = async () => {}
