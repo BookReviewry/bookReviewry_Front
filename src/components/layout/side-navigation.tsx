@@ -1,6 +1,6 @@
 'use client'
 
-import { theme } from '@/app/styles/theme'
+import { theme } from '@/assets/styles/theme'
 import {
   Box,
   Divider,
@@ -9,7 +9,7 @@ import {
   ListItemButton,
   ListItemText,
   ThemeProvider,
-} from '@/lib/mui'
+} from '@/lib/useClient/mui'
 import React, { useEffect } from 'react'
 
 const SideNavigation = () => {
