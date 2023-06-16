@@ -10,14 +10,14 @@ import {
   ListItemText,
   ThemeProvider,
 } from '@/lib/mui'
-// import { AutoStories } from '@mui/icons-material'
 import React from 'react'
 
 const SideNavigation = () => {
-  const [selectedIndex, setSelectedIndex] = React.useState(1)
+  const [selectedIndex, setSelectedIndex] = React.useState(0)
 
   const baseURL = 'https://bookreviewry-back-pmchm.run.goorm.site/'
 
+  //메뉴 클릭 시 색 변화
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     index: number,
@@ -25,10 +25,15 @@ const SideNavigation = () => {
     setSelectedIndex(index)
   }
 
-  const onClickLoginBtn = async () => {
-    const response = await fetch(baseURL + 'myAPI')
-    console.log(response.json())
-  }
+  //google login 위한 라이브러리 추가
+  const script = document.createElement('script')
+  script.src = 'https://accounts.google.com/gsi/client'
+  script.async = true
+  script.defer = true
+  document.body.appendChild(script)
+
+  //TODO: 로그인 성공 시 token 받고 처리할 것
+  const handleToken = async () => {}
 
   return (
     <ThemeProvider theme={theme}>
@@ -97,21 +102,36 @@ const SideNavigation = () => {
           </ListItem>
         </List>
         <List>
-          <ListItemButton
-            alignItems='center'
-            onClick={onClickLoginBtn}
+          <Box
             sx={{
-              mx: 2,
+              mx: 3,
               position: 'fixed',
-              bottom: 20,
-              width: '140px',
+              bottom: 40,
+              width: '125px',
               bgcolor: 'info.main',
               color: 'white',
               borderRadius: 5,
             }}
           >
-            <ListItemText primary='로그인' />
-          </ListItemButton>
+            <div
+              id='g_id_onload'
+              data-client_id='109848663641-i8jvl11sob2n2463sktckj3q877bg2kc.apps.googleusercontent.com'
+              data-context='signin'
+              data-ux_mode='popup'
+              data-login_uri={baseURL + 'myAPI'}
+              data-callback={handleToken}
+              data-auto_prompt='false'
+            ></div>
+            <div
+              className='g_id_signin'
+              data-type='standard'
+              data-shape='pill'
+              data-theme='filled_black'
+              data-text='signin'
+              data-size='large'
+              data-logo_alignment='left'
+            ></div>
+          </Box>
         </List>
       </Box>
     </ThemeProvider>

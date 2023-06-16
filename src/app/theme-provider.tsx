@@ -1,27 +1,15 @@
 'use client'
 
+import { Theme } from '@mui/material'
 import { createContext, ReactNode } from 'react'
 
-export const ThemeContext = createContext({})
-
-export default function ThemeProvider({ children }: { children: ReactNode }) {
-  return <ThemeContext.Provider value='dark'>{children}</ThemeContext.Provider>
+export interface ThemeProviderProps {
+  theme: Theme
+  children: ReactNode
 }
 
-// import { DefaultTheme } from '@mui/system'
+export const ThemeContext = createContext({} as Theme)
 
-// export interface ThemeProviderProps<Theme = DefaultTheme> {
-//   children?: React.ReactNode
-//   theme: Partial<Theme> | ((outerTheme: Theme) => Theme)
-// }
-
-// /**
-//  * This component makes the `theme` available down the React tree.
-//  * It should preferably be used at **the root of your component tree**.
-//  * API:
-//  *
-//  * - [ThemeProvider API](https://mui.com/material-ui/customization/theming/#themeprovider)
-//  */
-// export default function ThemeProvider<T = DefaultTheme>(
-//   props: ThemeProviderProps<T>,
-// ): React.ReactElement<ThemeProviderProps<T>>
+export default function ThemeProvider({ children, theme }: ThemeProviderProps) {
+  return <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
+}

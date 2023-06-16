@@ -1,4 +1,3 @@
-// import styles from './page.module.scss'
 import { Button } from '../lib/mui'
 import RootLayout from './layout'
 
