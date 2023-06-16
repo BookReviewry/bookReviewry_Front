@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Paper, InputBase, IconButton } from '@/lib/mui'
+import { Paper, InputBase, IconButton } from '@/lib/useClient/mui'
 import { Search } from '@mui/icons-material'
 
 const Header = () => {

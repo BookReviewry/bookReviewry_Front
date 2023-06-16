@@ -1,7 +1,6 @@
-import { Button } from '../lib/mui'
-import RootLayout from './layout'
-import './globals.css'
-import Header from './components/layout/header'
+import RootLayout from '@/app/layout'
+import '@/assets/styles/globals.css'
+import Header from '@/components/layout/header'
 
 export default function Home() {
   return (

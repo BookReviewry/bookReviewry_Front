@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import SideNavigation from './components/layout/side-navigation'
+import SideNavigation from '@/components/layout/side-navigation'
 
 export default function RootLayout({
   children,
