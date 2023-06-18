@@ -1,0 +1,48 @@
+.simple {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+.simple img {
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+}
+
+.detail {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+
+  .memberName {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+  .profileTxt {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+  .infoContainer {
+    display: flex;
+    flex-direction: row;
+  }
+}
+.detail img {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 15px;
+}
+.infoContainer div {
+  margin-top: 10px;
+  padding-left: 10px;
+  flex: 1;
+  font-size: 14px;
+  font-weight: 700;
+
+  .title {
+    padding-bottom: 10px;
+  }
+}
