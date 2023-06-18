@@ -1,5 +1,6 @@
-import { Favorite, FavoriteBorder } from '@mui/icons-material'
+'use client'
 import React from 'react'
+import { Favorite, FavoriteBorder } from '@mui/icons-material'
 
 type Props = { likes: number }
 
