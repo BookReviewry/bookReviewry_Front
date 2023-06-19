@@ -1,7 +1,7 @@
 'use client'
 
 import RootLayout from '@/app/layout'
-import '@/assets/styles/globals.css'
+import '@/assets/styles/globals.scss'
 import SearchBar from '@/components/layout/search-bar'
 import { useEffect, useState } from 'react'
 
