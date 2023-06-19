@@ -2,7 +2,7 @@
 
 import RootLayout from '@/app/layout'
 import '@/assets/styles/globals.css'
-import Header from '@/components/layout/header'
+import SearchBar from '@/components/layout/search-bar'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
     <>
       {mounted && (
         <RootLayout>
-          <Header />
+          <SearchBar />
           <h1>메인페이지 내용을 넣읍시다</h1>
         </RootLayout>
       )}
