@@ -18,7 +18,7 @@ const SideNavigation = () => {
   const baseURL = 'https://bookreviewry-back-pmchm.run.goorm.site/'
 
   //메뉴 클릭 시 색 변화
-  const handleListItemClick = (
+  const onClickListItem = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     index: number,
   ) => {
@@ -54,7 +54,7 @@ const SideNavigation = () => {
           <ListItem>
             <ListItemButton
               selected={selectedIndex === 0}
-              onClick={event => handleListItemClick(event, 0)}
+              onClick={event => onClickListItem(event, 0)}
             >
               <ListItemText primary='오픈 서재' />
             </ListItemButton>
@@ -62,7 +62,7 @@ const SideNavigation = () => {
           <ListItem>
             <ListItemButton
               selected={selectedIndex === 1}
-              onClick={event => handleListItemClick(event, 1)}
+              onClick={event => onClickListItem(event, 1)}
             >
               <ListItemText secondary='마음챙김' />
             </ListItemButton>
@@ -70,7 +70,7 @@ const SideNavigation = () => {
           <ListItem>
             <ListItemButton
               selected={selectedIndex === 2}
-              onClick={event => handleListItemClick(event, 2)}
+              onClick={event => onClickListItem(event, 2)}
             >
               <ListItemText secondary='행복' />
             </ListItemButton>
@@ -78,7 +78,7 @@ const SideNavigation = () => {
           <ListItem>
             <ListItemButton
               selected={selectedIndex === 3}
-              onClick={event => handleListItemClick(event, 3)}
+              onClick={event => onClickListItem(event, 3)}
             >
               <ListItemText secondary='자아정체성' />
             </ListItemButton>
@@ -86,7 +86,7 @@ const SideNavigation = () => {
           <ListItem>
             <ListItemButton
               selected={selectedIndex === 4}
-              onClick={event => handleListItemClick(event, 4)}
+              onClick={event => onClickListItem(event, 4)}
             >
               <ListItemText secondary='자존감' />
             </ListItemButton>
@@ -97,7 +97,7 @@ const SideNavigation = () => {
           <ListItem>
             <ListItemButton
               selected={selectedIndex === 0}
-              onClick={event => handleListItemClick(event, 0)}
+              onClick={event => onClickListItem(event, 0)}
             >
               <ListItemText primary='내 책장' />
             </ListItemButton>

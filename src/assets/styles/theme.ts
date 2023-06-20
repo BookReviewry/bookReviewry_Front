@@ -3,6 +3,14 @@
 import { Roboto } from 'next/font/google'
 import { Theme, createTheme } from '@mui/material/styles'
 
+declare module '@mui/material' {
+  interface Color {
+    main: string
+    dark: string
+    light: string
+  }
+}
+
 export type Color = 'black' | 'grey'
 
 const color: { [key in Color]: string } = {
@@ -23,6 +31,7 @@ const theme: Theme = createTheme({
     primary: {
       main: '#F7ECDE',
       dark: '#E9DAC1',
+      light: '#FFF9F2',
     },
     secondary: {
       main: '#54BAB9',
@@ -30,6 +39,11 @@ const theme: Theme = createTheme({
     },
     info: {
       main: '#7A001B',
+    },
+    grey: {
+      dark: '#3A3A3A',
+      main: '#8F9191',
+      light: '#E4E4E4',
     },
   },
   typography: {
