@@ -1,8 +1,10 @@
 'use client'
 import React from 'react'
-import styles from './BookCover.module.css'
+import styles from './BookCover.module.scss'
 
-type Props = { imgUrl: string; empathyRate?: string | number }
+import EmpathyRate from '../EmpathyRate/EmpathyRate'
+
+type Props = { imgUrl: string; empathyRate: number }
 
 const BookCover = (props: Props) => {
   const [isHovering, setIsHovering] = React.useState(false)
@@ -14,6 +16,7 @@ const BookCover = (props: Props) => {
         className={styles.bookCover}
         style={{
           position: 'relative',
+          top: 0,
           boxShadow: '0px 10px 25px -15px #333333',
 
           //TODO: hover 이벤트로 이동할때, 조금 더 부드럽게 이동하도록 해야함 - animation | @keyframes 사용!
@@ -27,14 +30,13 @@ const BookCover = (props: Props) => {
           top: 0,
           backgroundColor: isHovering ? 'rgba(68, 68, 68, 0.5)' : 'transparent',
           marginTop: isHovering ? -25 : 0,
-
-          //FIXME: 공감지수 컴포넌트 import후 삭제 필요
-          color: 'white',
         }}
         onMouseOver={() => setIsHovering(true)}
         onMouseOut={() => setIsHovering(false)}
       >
-        {isHovering ? props.empathyRate ?? '공감지수 컴포넌트' : null}
+        {isHovering && props.empathyRate ? (
+          <EmpathyRate rate={props.empathyRate} />
+        ) : null}
       </div>
     </div>
   )
