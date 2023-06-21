@@ -2,7 +2,7 @@
 
 import RootLayout from '@/app/layout'
 import '@/assets/styles/globals.scss'
-import SearchBar from '@/components/layout/search-bar'
+import SearchBar from '@/components/layout/SearchBar'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
