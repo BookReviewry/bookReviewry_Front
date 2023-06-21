@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { Favorite, FavoriteBorder } from '@mui/icons-material'
+import { ThumbUpAlt } from '@mui/icons-material'
 
 type Props = { likes: number }
 
@@ -19,11 +19,7 @@ const Like = (props: Props) => {
       onClick={handleOnClick}
       style={{ zIndex: 1, display: 'flex', alignItems: 'center' }}
     >
-      {cnt > 0 ? (
-        <Favorite color='error' style={{ marginRight: '5px' }} />
-      ) : (
-        <FavoriteBorder style={{ marginRight: '5px' }} />
-      )}
+      <ThumbUpAlt style={{ marginRight: '5px' }} />
       {cnt}
     </div>
   )
