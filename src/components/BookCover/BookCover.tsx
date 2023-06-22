@@ -26,7 +26,7 @@ const BookCover = (props: Props) => {
         className={styles.bookCover}
         style={{
           position: 'absolute',
-          top: 25,
+          top: 0,
           backgroundColor: isHovering ? 'rgba(68, 68, 68, 0.5)' : 'transparent',
           marginTop: isHovering ? -25 : 0,
         }}

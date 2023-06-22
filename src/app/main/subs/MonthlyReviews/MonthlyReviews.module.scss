@@ -1,0 +1,17 @@
+.container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-width: 600px;
+  max-width: 1000px;
+  height: max-content;
+  overflow-y: hidden;
+  column-gap: 20px;
+  margin-top: 8px;
+  padding-top: 25px;
+  scrollbar-width: none; //scrollbar 숨기기 - Firefox
+  -ms-overflow-style: none; //scrollbar 숨기기 - IE and Edge
+}
+.container::-webkit-scrollbar {
+  display: none; //scrollbar 숨기기 - Chrome, Safari, Opera
+}
