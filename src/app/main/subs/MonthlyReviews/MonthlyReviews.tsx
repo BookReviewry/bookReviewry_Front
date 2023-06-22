@@ -1,27 +1,34 @@
+'use client'
 import React from 'react'
 import styles from './MonthlyReviews.module.scss'
-import BookCover from '@/components/BookCover/BookCover'
+import MainReview from './MainReview'
 
 type Props = {}
 
 const MonthlyReviews = (props: Props) => {
+  const sampleReviews = [
+    {
+      imgUrl: '/images/sample_book.png',
+      like: 10,
+      content: `테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트${'\n'}테스트${'\n'}테스트${'\n'}테스트${'\n'}테스트${'\n'}테스트테스트테스트테스트테스트테스트테스트테스트테스트`,
+    },
+    {
+      imgUrl: '/images/sample_book.png',
+      like: 10,
+      content: `테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트${'\n'}테스트${'\n'}테스트${'\n'}테스트${'\n'}테스트${'\n'}테스트테스트테스트테스트테스트테스트테스트테스트테스트`,
+    },
+    {
+      imgUrl: '/images/sample_book.png',
+      like: 10,
+      content: `테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트${'\n'}테스트${'\n'}테스트${'\n'}테스트${'\n'}테스트${'\n'}테스트테스트테스트테스트테스트테스트테스트테스트테스트`,
+    },
+  ]
+
   return (
     <div className={styles.container}>
-      <BookCover imgUrl='/images/sample_book.png' empathyRate={100} />
-
-      <BookCover imgUrl='/images/sample_book.png' empathyRate={80} />
-
-      <BookCover imgUrl='/images/sample_book.png' empathyRate={60} />
-
-      <BookCover imgUrl='/images/sample_book.png' empathyRate={40} />
-
-      <BookCover imgUrl='/images/sample_book.png' empathyRate={100} />
-
-      <BookCover imgUrl='/images/sample_book.png' empathyRate={80} />
-
-      <BookCover imgUrl='/images/sample_book.png' empathyRate={60} />
-
-      <BookCover imgUrl='/images/sample_book.png' empathyRate={40} />
+      {sampleReviews.map((item, index) => (
+        <MainReview key={index} imgUrl={item.imgUrl} like={item.like} content={item.content} />
+      ))}
     </div>
   )
 }

@@ -4,7 +4,7 @@ import styles from './BookCover.module.scss'
 
 import EmpathyRate from '../EmpathyRate/EmpathyRate'
 
-type Props = { imgUrl: string; empathyRate: number }
+type Props = { imgUrl: string; empathyRate?: number }
 
 const BookCover = (props: Props) => {
   const [isHovering, setIsHovering] = React.useState(false)
@@ -30,12 +30,10 @@ const BookCover = (props: Props) => {
           backgroundColor: isHovering ? 'rgba(68, 68, 68, 0.5)' : 'transparent',
           marginTop: isHovering ? -25 : 0,
         }}
-        onMouseOver={() => setIsHovering(true)}
-        onMouseOut={() => setIsHovering(false)}
+        onMouseOver={() => (props.empathyRate ? setIsHovering(true) : null)}
+        onMouseOut={() => (props.empathyRate ? setIsHovering(false) : null)}
       >
-        {isHovering && props.empathyRate ? (
-          <EmpathyRate rate={props.empathyRate} />
-        ) : null}
+        {isHovering && props.empathyRate ? <EmpathyRate rate={props.empathyRate} /> : null}
       </div>
     </div>
   )

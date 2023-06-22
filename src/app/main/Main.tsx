@@ -4,6 +4,7 @@ import styles from './Main.module.scss'
 import SubPageTitle from '@/components/SubPageTitle/SubPageTitle'
 import SearchBar from './subs/SearchBar'
 import MonthlyReviews from './subs/MonthlyReviews/MonthlyReviews'
+import HorizontalBookList from './subs/HorizontalBookList/HorizontalBookList'
 
 type Props = {}
 
@@ -19,11 +20,11 @@ const Main = (props: Props) => {
       </div>
       <div className={styles.contentBox}>
         <SubPageTitle title='우리가 가장 공감한 도서' />
-        <MonthlyReviews />
+        <HorizontalBookList />
       </div>
       <div className={styles.contentBox}>
         <SubPageTitle title='우리가 가장 많이 리뷰한 도서' />
-        <MonthlyReviews />
+        <HorizontalBookList />
       </div>
     </div>
   )
