@@ -16,7 +16,6 @@ const BookCover = (props: Props) => {
         className={styles.bookCover}
         style={{
           position: 'relative',
-          top: 0,
           boxShadow: '0px 10px 25px -15px #333333',
 
           //TODO: hover 이벤트로 이동할때, 조금 더 부드럽게 이동하도록 해야함 - animation | @keyframes 사용!
@@ -27,7 +26,7 @@ const BookCover = (props: Props) => {
         className={styles.bookCover}
         style={{
           position: 'absolute',
-          top: 0,
+          top: 25,
           backgroundColor: isHovering ? 'rgba(68, 68, 68, 0.5)' : 'transparent',
           marginTop: isHovering ? -25 : 0,
         }}
