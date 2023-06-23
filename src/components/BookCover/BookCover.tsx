@@ -4,7 +4,7 @@ import styles from './BookCover.module.scss'
 
 import EmpathyRate from '../EmpathyRate/EmpathyRate'
 
-type Props = { imgUrl: string; empathyRate: number }
+type Props = { imgUrl: string; empathyRate?: number }
 
 const BookCover = (props: Props) => {
   const [isHovering, setIsHovering] = React.useState(false)
@@ -16,7 +16,6 @@ const BookCover = (props: Props) => {
         className={styles.bookCover}
         style={{
           position: 'relative',
-          top: 0,
           boxShadow: '0px 10px 25px -15px #333333',
 
           //TODO: hover 이벤트로 이동할때, 조금 더 부드럽게 이동하도록 해야함 - animation | @keyframes 사용!
@@ -31,12 +30,10 @@ const BookCover = (props: Props) => {
           backgroundColor: isHovering ? 'rgba(68, 68, 68, 0.5)' : 'transparent',
           marginTop: isHovering ? -25 : 0,
         }}
-        onMouseOver={() => setIsHovering(true)}
-        onMouseOut={() => setIsHovering(false)}
+        onMouseOver={() => (props.empathyRate ? setIsHovering(true) : null)}
+        onMouseOut={() => (props.empathyRate ? setIsHovering(false) : null)}
       >
-        {isHovering && props.empathyRate ? (
-          <EmpathyRate rate={props.empathyRate} />
-        ) : null}
+        {isHovering && props.empathyRate ? <EmpathyRate rate={props.empathyRate} /> : null}
       </div>
     </div>
   )

@@ -13,7 +13,7 @@ import {
   CircularProgress,
 } from '@/lib/useClient/mui'
 import { Clear, Search } from '@mui/icons-material'
-import data from './DUMMY_BOOKS.json'
+import data from '../../../components/layout/DUMMY_BOOKS.json'
 import { theme } from '@/assets/styles/theme'
 
 const SearchBar = () => {
