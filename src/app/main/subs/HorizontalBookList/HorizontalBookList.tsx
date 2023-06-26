@@ -1,5 +1,4 @@
 import React from 'react'
-import styles from './HorizontalBookList.module.scss'
 import BookCover from '@/components/BookCover/BookCover'
 
 type Props = {}
@@ -21,11 +20,11 @@ const HorizontalBookList = (props: Props) => {
   ]
 
   return (
-    <div className={styles.container}>
+    <>
       {sampleList.map((item, index) => (
         <BookCover key={index} imgUrl={item.imgUrl} empathyRate={item.empRate} />
       ))}
-    </div>
+    </>
   )
 }
 
