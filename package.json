@@ -30,6 +30,7 @@
   },
   "packageManager": "yarn@3.6.0",
   "devDependencies": {
+    "@svgr/webpack": "^8.0.1",
     "eslint-config-prettier": "^8.8.0"
   },
   "peerDependencies": {

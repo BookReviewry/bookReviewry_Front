@@ -1,18 +1,11 @@
 'use client'
 
 import { theme } from '@/assets/styles/theme'
-import {
-  Box,
-  Divider,
-  ListItemButton,
-  ListItemText,
-  MenuItem,
-  MenuList,
-  ThemeProvider,
-} from '@/lib/useClient/mui'
+import { Box, Button, Divider, ListItemButton, ListItemText, MenuItem, MenuList, ThemeProvider } from '@/lib/useClient/mui'
 import LocalLibraryRoundedIcon from '@mui/icons-material/LocalLibraryRounded'
 import React, { useEffect } from 'react'
 import classes from './SideNavigation.module.scss'
+import GoogleIcon from '@/assets/image/button/btn_google_light_normal_ios.svg'
 
 const SideNavigation = () => {
   const baseURL = 'https://bookreviewry-back-pmchm.run.goorm.site/'
@@ -26,8 +19,14 @@ const SideNavigation = () => {
     document.body.appendChild(script)
   }, [])
 
-  //TODO: 로그인 성공 시 token 받고 처리할 것
-  const handleToken = async () => {}
+  //TODO: 1. 구글 로그인 후 jwt 토큰 쿠키 확인
+  //2. 로그인 후 유저 정보를 바로 store에 담을것인가?
+  const googleLogin = async () => {
+    const res = await fetch(baseURL + 'myAPI', {
+      credentials: 'include',
+    })
+    console.log(res.json())
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -40,11 +39,7 @@ const SideNavigation = () => {
         }}
       >
         <MenuList>
-          <ListItemButton
-            alignItems='center'
-            href='/'
-            sx={{ mx: 2, mt: 2, mb: 4 }}
-          >
+          <ListItemButton alignItems='center' href='/' sx={{ mx: 2, mt: 2, mb: 4 }}>
             <LocalLibraryRoundedIcon />
             <ListItemText primary='bookreviewry' />
           </ListItemButton>
@@ -71,23 +66,29 @@ const SideNavigation = () => {
           </MenuItem>
         </MenuList>
         <MenuList>
-          <Box
+          <Button
+            variant='contained'
             sx={{
               mx: 3,
               position: 'fixed',
               bottom: 40,
-              width: '125px',
-              bgcolor: 'info.main',
-              color: 'white',
-              borderRadius: 5,
+              width: '130px',
+              bgcolor: 'white',
+              color: 'grey',
+              borderRadius: 3,
+              gap: 1,
             }}
+            onClick={googleLogin}
           >
-            <div
+            <GoogleIcon />
+            <p>로그인</p>
+          </Button>
+          {/* <div
               id='g_id_onload'
               data-client_id='109848663641-i8jvl11sob2n2463sktckj3q877bg2kc.apps.googleusercontent.com'
               data-context='signin'
               data-ux_mode='popup'
-              data-login_uri={baseURL + 'myAPI'}
+              // data-login_uri={baseURL + 'myAPI'} //우리 서버에 구글에서 반환된 사용자 인증정보(google id token) 전달
               data-callback={handleToken}
               data-auto_prompt='false'
             ></div>
@@ -99,8 +100,7 @@ const SideNavigation = () => {
               data-text='signin'
               data-size='large'
               data-logo_alignment='left'
-            ></div>
-          </Box>
+            ></div> */}
         </MenuList>
       </Box>
     </ThemeProvider>
