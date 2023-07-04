@@ -3,12 +3,16 @@
 import { theme } from '@/assets/styles/theme'
 import { Box, Button, Divider, ListItemButton, ListItemText, MenuItem, MenuList, ThemeProvider } from '@/lib/useClient/mui'
 import LocalLibraryRoundedIcon from '@mui/icons-material/LocalLibraryRounded'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import classes from './SideNavigation.module.scss'
 import GoogleIcon from '@/assets/image/button/btn_google_light_normal_ios.svg'
+import { env } from 'process'
+import { Member } from '@/types/type'
 
 const SideNavigation = () => {
-  const baseURL = 'https://bookreviewry-back-pmchm.run.goorm.site/'
+  //TODO: 임시! user context 만들기
+  //TODO: jwt 값 저장하기?
+  const [user, setUser] = useState<Member>({})
 
   useEffect(() => {
     //google login 위한 라이브러리 추가
@@ -17,15 +21,31 @@ const SideNavigation = () => {
     script.async = true
     script.defer = true
     document.body.appendChild(script)
+
+    //token 가져오기
+    const token = new URLSearchParams(location.search).get('token')
+    if (!token) return
+    const getUserProfile = async () => {
+      const res = await fetch('/user/profile', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      const data = await res.json()
+      setUser(data)
+    }
+    getUserProfile()
   }, [])
 
-  //TODO: 1. 구글 로그인 후 jwt 토큰 쿠키 확인
-  //2. 로그인 후 유저 정보를 바로 store에 담을것인가?
-  const googleLogin = async () => {
-    const res = await fetch(baseURL + 'myAPI', {
-      credentials: 'include',
-    })
-    console.log(res.json())
+  const googleLogin = () => {
+    location.href = env.BASE_URL + '/oauth2/authorization/google'
+  }
+
+  //TODO: logout 처리
+  const logout = async () => {
+    // await fetch('/logout')
+    setUser({})
   }
 
   return (
@@ -66,41 +86,42 @@ const SideNavigation = () => {
           </MenuItem>
         </MenuList>
         <MenuList>
-          <Button
-            variant='contained'
-            sx={{
-              mx: 3,
-              position: 'fixed',
-              bottom: 40,
-              width: '130px',
-              bgcolor: 'white',
-              color: 'grey',
-              borderRadius: 3,
-              gap: 1,
-            }}
-            onClick={googleLogin}
-          >
-            <GoogleIcon />
-            <p>로그인</p>
-          </Button>
-          {/* <div
-              id='g_id_onload'
-              data-client_id='109848663641-i8jvl11sob2n2463sktckj3q877bg2kc.apps.googleusercontent.com'
-              data-context='signin'
-              data-ux_mode='popup'
-              // data-login_uri={baseURL + 'myAPI'} //우리 서버에 구글에서 반환된 사용자 인증정보(google id token) 전달
-              data-callback={handleToken}
-              data-auto_prompt='false'
-            ></div>
-            <div
-              className='g_id_signin'
-              data-type='standard'
-              data-shape='pill'
-              data-theme='filled_black'
-              data-text='signin'
-              data-size='large'
-              data-logo_alignment='left'
-            ></div> */}
+          {!user ? (
+            <Button
+              variant='contained'
+              sx={{
+                mx: 3,
+                position: 'fixed',
+                bottom: 40,
+                width: '130px',
+                bgcolor: 'white',
+                color: 'grey',
+                borderRadius: 3,
+                gap: 1,
+              }}
+              onClick={googleLogin}
+            >
+              <GoogleIcon />
+              <p>로그인</p>
+            </Button>
+          ) : (
+            <Button
+              variant='contained'
+              sx={{
+                mx: 3,
+                position: 'fixed',
+                bottom: 40,
+                width: '130px',
+                bgcolor: 'white',
+                color: 'grey',
+                borderRadius: 3,
+                gap: 1,
+              }}
+              onClick={logout}
+            >
+              <p>로그아웃</p>
+            </Button>
+          )}
         </MenuList>
       </Box>
     </ThemeProvider>
