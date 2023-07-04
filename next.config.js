@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 
+const { env } = require('process')
+
 const nextConfig = {
   reactStrictMode: true,
   webpack: config => {
@@ -9,6 +11,14 @@ const nextConfig = {
       use: ['@svgr/webpack'],
     })
     return config
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/:path*',
+        destination: env.BASE_URL + '/:path*',
+      },
+    ]
   },
 }
 
