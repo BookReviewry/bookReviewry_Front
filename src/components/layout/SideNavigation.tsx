@@ -3,16 +3,15 @@
 import { theme } from '@/assets/styles/theme'
 import { Box, Button, Divider, ListItemButton, ListItemText, MenuItem, MenuList, ThemeProvider } from '@/lib/useClient/mui'
 import LocalLibraryRoundedIcon from '@mui/icons-material/LocalLibraryRounded'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import classes from './SideNavigation.module.scss'
 import GoogleIcon from '@/assets/image/button/btn_google_light_normal_ios.svg'
 import { env } from 'process'
-import { Member } from '@/types/type'
+import { useAuth } from '@/hooks/useAuth'
 
 const SideNavigation = () => {
-  //TODO: 임시! user context 만들기
-  //TODO: jwt 값 저장하기?
-  const [user, setUser] = useState<Member>({})
+  //TODO: loginMember 가져오기!
+  const { isLogin, login, logout } = useAuth()
 
   useEffect(() => {
     //google login 위한 라이브러리 추가
@@ -25,27 +24,18 @@ const SideNavigation = () => {
     //token 가져오기
     const token = new URLSearchParams(location.search).get('token')
     if (!token) return
-    const getUserProfile = async () => {
-      const res = await fetch('/user/profile', {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      const data = await res.json()
-      setUser(data)
-    }
-    getUserProfile()
+    //로그인
+    login(token)
   }, [])
 
-  const googleLogin = () => {
+  const handleLogin = () => {
     location.href = env.BASE_URL + '/oauth2/authorization/google'
   }
 
   //TODO: logout 처리
-  const logout = async () => {
+  const handleLogout = async () => {
     // await fetch('/logout')
-    setUser({})
+    logout()
   }
 
   return (
@@ -86,7 +76,7 @@ const SideNavigation = () => {
           </MenuItem>
         </MenuList>
         <MenuList>
-          {!user ? (
+          {!isLogin ? (
             <Button
               variant='contained'
               sx={{
@@ -99,7 +89,7 @@ const SideNavigation = () => {
                 borderRadius: 3,
                 gap: 1,
               }}
-              onClick={googleLogin}
+              onClick={handleLogin}
             >
               <GoogleIcon />
               <p>로그인</p>
@@ -117,7 +107,7 @@ const SideNavigation = () => {
                 borderRadius: 3,
                 gap: 1,
               }}
-              onClick={logout}
+              onClick={handleLogout}
             >
               <p>로그아웃</p>
             </Button>
