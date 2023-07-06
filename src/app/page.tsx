@@ -1,14 +1,13 @@
 'use client'
 
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import '@/assets/styles/globals.scss'
 import RootLayout from '@/app/layout'
 import Main from './main/Main'
-import { AuthContext } from './store/AuthContext'
+import AuthContextProvider from './store/AuthContextProvider'
 
 export default function Home() {
   const [mounted, setMounted] = useState(false)
-  const { loginMember, setLoginMember } = useContext(AuthContext)
 
   useEffect(() => {
     setMounted(true)
@@ -17,11 +16,11 @@ export default function Home() {
   return (
     <>
       {mounted && (
-        <AuthContext.Provider value={{ loginMember, setLoginMember }}>
+        <AuthContextProvider>
           <RootLayout>
             <Main />
           </RootLayout>
-        </AuthContext.Provider>
+        </AuthContextProvider>
       )}
     </>
   )

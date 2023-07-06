@@ -3,24 +3,16 @@
 import { theme } from '@/assets/styles/theme'
 import { Box, Button, Divider, ListItemButton, ListItemText, MenuItem, MenuList, ThemeProvider } from '@/lib/useClient/mui'
 import LocalLibraryRoundedIcon from '@mui/icons-material/LocalLibraryRounded'
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import classes from './SideNavigation.module.scss'
 import GoogleIcon from '@/assets/image/button/btn_google_light_normal_ios.svg'
 import { env } from 'process'
 import { useAuth } from '@/hooks/useAuth'
 
 const SideNavigation = () => {
-  //TODO: loginMember 가져오기!
-  const { isLogin, login, logout } = useAuth()
+  const { loginMember, isLogin, login, logout } = useAuth()
 
   useEffect(() => {
-    //google login 위한 라이브러리 추가
-    const script = document.createElement('script')
-    script.src = 'https://accounts.google.com/gsi/client'
-    script.async = true
-    script.defer = true
-    document.body.appendChild(script)
-
     //token 가져오기
     const token = new URLSearchParams(location.search).get('token')
     if (!token) return
@@ -30,12 +22,6 @@ const SideNavigation = () => {
 
   const handleLogin = () => {
     location.href = env.BASE_URL + '/oauth2/authorization/google'
-  }
-
-  //TODO: logout 처리
-  const handleLogout = async () => {
-    // await fetch('/logout')
-    logout()
   }
 
   return (
@@ -83,10 +69,9 @@ const SideNavigation = () => {
                 mx: 3,
                 position: 'fixed',
                 bottom: 40,
-                width: '130px',
                 bgcolor: 'white',
                 color: 'grey',
-                borderRadius: 3,
+                borderRadius: 5,
                 gap: 1,
               }}
               onClick={handleLogin}
@@ -96,18 +81,20 @@ const SideNavigation = () => {
             </Button>
           ) : (
             <Button
+              className='g_id_signout'
               variant='contained'
               sx={{
                 mx: 3,
                 position: 'fixed',
                 bottom: 40,
-                width: '130px',
-                bgcolor: 'white',
-                color: 'grey',
-                borderRadius: 3,
+                bgcolor: 'grey',
+                color: 'white',
+                borderRadius: 5,
                 gap: 1,
+                width: 130,
+                height: 52,
               }}
-              onClick={handleLogout}
+              onClick={logout}
             >
               <p>로그아웃</p>
             </Button>

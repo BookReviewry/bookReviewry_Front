@@ -2238,6 +2238,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/google.accounts@npm:^0.0.7":
+  version: 0.0.7
+  resolution: "@types/google.accounts@npm:0.0.7"
+  checksum: a9c9537f3a1ba6dbd9035cf2af6e920174c747c020601baee1a6fc8e0a4054906136dec2e4fdb9452eb3ac3834783e1ee16723d1c65d4a0ceb5285164c9d9016
+  languageName: node
+  linkType: hard
+
 "@types/json5@npm:^0.0.29":
   version: 0.0.29
   resolution: "@types/json5@npm:0.0.29"
@@ -2706,6 +2713,7 @@ __metadata:
     "@mui/icons-material": ^5.11.16
     "@mui/material": ^5.13.5
     "@svgr/webpack": ^8.0.1
+    "@types/google.accounts": ^0.0.7
     "@types/mui-image": ^1.0.1
     "@types/node": 20.3.0
     "@types/react": 18.2.12

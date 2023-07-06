@@ -1,12 +1,16 @@
 import { Member } from '@/types/type'
-import React from 'react'
+import React, { createContext } from 'react'
 
 interface AuthContext {
   loginMember: Member | null
-  setLoginMember: (member: Member | null) => void
+  login: (token: string) => void
+  logout: () => void
+  isLogin: boolean
 }
 
-export const AuthContext = React.createContext<AuthContext>({
+export const AuthContext = createContext<AuthContext>({
   loginMember: null,
-  setLoginMember: () => {},
+  login: () => {},
+  logout: () => {},
+  isLogin: false,
 })
