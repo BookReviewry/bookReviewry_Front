@@ -5,15 +5,13 @@ import { Member } from '@/types/type'
 export const useProvideAuth = () => {
   const [loginMember, setLoginMember] = useState<Member | null>(null)
   const [isLogin, setIsLogin] = useState<boolean>(false)
-  const { getItem, setItem, removeItem } = useLocalStorage()
+  const { setItem, removeItem } = useLocalStorage()
 
   useEffect(() => {
-    const loginMember = getItem('loginMember')
     if (loginMember) {
-      setLoginMember(JSON.parse(loginMember))
       setIsLogin(!!loginMember)
     }
-  }, [])
+  }, [loginMember])
 
   const login = async (token: string) => {
     const res = await fetch('/user/profile', {
@@ -23,18 +21,15 @@ export const useProvideAuth = () => {
       },
     })
     const data = await res.json()
-    const loginMember: Member = {
-      ...data,
-      accessToken: token,
-    }
+    const loginMember: Member = data
+    setItem('JWT_KEY', token)
     setLoginMember(loginMember)
-    setItem('loginMember', JSON.stringify(loginMember))
     setIsLogin(true)
   }
 
   const logout = () => {
     setLoginMember(null)
-    removeItem('loginMember')
+    removeItem('JWT_KEY')
     setIsLogin(false)
     //TODO: google logout - 로그아웃 후 자동 선택 방지
     google.accounts.id.disableAutoSelect()
