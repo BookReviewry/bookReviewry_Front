@@ -8,9 +8,7 @@ export const useProvideAuth = () => {
   const { setItem, removeItem } = useLocalStorage()
 
   useEffect(() => {
-    if (loginMember) {
-      setIsLogin(!!loginMember)
-    }
+    setIsLogin(!!loginMember)
   }, [loginMember])
 
   const login = async (token: string) => {
