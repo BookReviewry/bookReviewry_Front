@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import '@/assets/styles/globals.scss'
-import RootLayout from '@/app/layout'
-import Main from './main/Main'
+import Main from './main/page'
 import AuthContextProvider from '../store/AuthContextProvider'
 
 export default function Home() {
@@ -17,9 +16,7 @@ export default function Home() {
     <>
       {mounted && (
         <AuthContextProvider>
-          <RootLayout>
-            <Main />
-          </RootLayout>
+          <Main />
         </AuthContextProvider>
       )}
     </>
