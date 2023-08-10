@@ -4,8 +4,8 @@ import { Member } from '@/types/type'
 
 export const useProvideAuth = () => {
   const { getItem, setItem, removeItem } = useLocalStorage()
-  const [loginMember, setLoginMember] = useState<Member | null>(null)
-  const [token, setToken] = useState<string | null>(null)
+  const [loginMember, setLoginMember] = useState<Member>({})
+  const [token, setToken] = useState<string>('')
   const [isLogin, setIsLogin] = useState<boolean>(false)
 
   useEffect(() => {
@@ -28,11 +28,10 @@ export const useProvideAuth = () => {
   }
 
   const logout = () => {
-    setLoginMember(null)
     removeItem('JWT_KEY')
-    setToken(null)
+    setToken('')
     setIsLogin(false)
-    setLoginMember(null)
+    setLoginMember({})
     //TODO: google logout - 로그아웃 후 자동 선택 방지
     google.accounts.id.disableAutoSelect()
 
