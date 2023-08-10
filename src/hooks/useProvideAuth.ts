@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocalStorage } from './useLocalStorage'
 import { Member } from '@/types/type'
 
 export const useProvideAuth = () => {
   const { getItem, setItem, removeItem } = useLocalStorage()
-  const [loginMember, setLoginMember] = useState<Member | null>(null)
-  const [token, setToken] = useState(getItem('JWT_KEY'))
-  const [isLogin, setIsLogin] = useState<boolean>(!!token)
+  const [loginMember, setLoginMember] = useState<Member>({})
+  const [token, setToken] = useState<string>('')
+  const [isLogin, setIsLogin] = useState<boolean>(false)
 
   useEffect(() => {
-    setItem('JWT_KEY', token!)
+    const token = getItem('JWT_KEY')
     setIsLogin(!!token)
-  }, [token])
+  }, [])
 
   const login = async (token: string) => {
     const res = await fetch('/user/profile', {
@@ -23,13 +23,15 @@ export const useProvideAuth = () => {
     const data = await res.json()
     const loginMember: Member = data
     setItem('JWT_KEY', token)
+    setIsLogin(true)
     setLoginMember(loginMember)
   }
 
   const logout = () => {
-    setLoginMember(null)
     removeItem('JWT_KEY')
-    setToken(null)
+    setToken('')
+    setIsLogin(false)
+    setLoginMember({})
     //TODO: google logout - 로그아웃 후 자동 선택 방지
     google.accounts.id.disableAutoSelect()
 
