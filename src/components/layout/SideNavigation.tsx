@@ -1,14 +1,16 @@
 'use client'
 
-import { theme } from '@/assets/styles/theme'
-import { Box, Button, Divider, ListItemButton, ListItemText, MenuItem, MenuList, ThemeProvider } from '@/lib/useClient/mui'
-import LocalLibraryRoundedIcon from '@mui/icons-material/LocalLibraryRounded'
 import React, { useEffect } from 'react'
-import classes from './SideNavigation.module.scss'
-import GoogleIcon from '@/assets/image/button/btn_google_light_normal_ios.svg'
+import { useRouter } from 'next/navigation'
 import { env } from 'process'
+import LocalLibraryRoundedIcon from '@mui/icons-material/LocalLibraryRounded'
+import { Box, Button, Divider, ListItemButton, ListItemText, MenuItem, MenuList, ThemeProvider } from '@/lib/useClient/mui'
+import { theme } from '@/assets/styles/theme'
+import GoogleIcon from '@/assets/image/button/btn_google_light_normal_ios.svg'
 import { useAuth } from '@/hooks/useAuth'
 import { useRouter } from 'next/navigation'
+import classes from './SideNavigation.module.scss'
+import { CATEGORY } from '@/constants/categories'
 
 const SideNavigation = () => {
   const { loginMember, isLogin, login, logout } = useAuth()
@@ -26,36 +28,39 @@ const SideNavigation = () => {
     router.push('https://bookreviewry-back-pmchm.run.goorm.io/oauth2/authorization/google')
   }
 
+  /* Navigation */
+  const router = useRouter()
+
+  // category 화면 별로 searchParams 지정하여 보내주는 함수 - CATEGORY 활용
+  const handleRouter = (pathname: string, param: { name: string; value: string }) => {
+    const params = new URLSearchParams()
+    params.set(param.name, param.value)
+    const newParams = params.toString()
+    router.push(`${pathname}?${newParams}`)
+  }
+
   return (
     <ThemeProvider theme={theme}>
-      <Box
-        sx={{
-          width: '100%',
-          maxWidth: 190,
-          height: '100%',
-          bgcolor: 'primary.main',
-        }}
-      >
+      <Box sx={{ width: '100%', maxWidth: 190, height: '100%', bgcolor: 'primary.main' }}>
         <MenuList>
           <ListItemButton alignItems='center' href='/' sx={{ mx: 2, mt: 2, mb: 4 }}>
             <LocalLibraryRoundedIcon />
             <ListItemText primary='bookreviewry' />
           </ListItemButton>
-          <MenuItem className={classes.menuItem}>
+
+          <MenuItem className={classes.menuItem} onClick={() => router.push('/')}>
             <ListItemText primary='오픈 서재' />
           </MenuItem>
-          <MenuItem className={classes.menuItem}>
-            <ListItemText secondary='마음챙김' />
-          </MenuItem>
-          <MenuItem className={classes.menuItem}>
-            <ListItemText secondary='행복' />
-          </MenuItem>
-          <MenuItem className={classes.menuItem}>
-            <ListItemText secondary='자아정체성' />
-          </MenuItem>
-          <MenuItem className={classes.menuItem}>
-            <ListItemText secondary='자존감' />
-          </MenuItem>
+
+          {CATEGORY.map((item, index) => (
+            <MenuItem
+              key={index}
+              className={classes.menuItem}
+              onClick={() => handleRouter('/category', { name: 'type', value: item.code })}
+            >
+              <ListItemText secondary={item.type} />
+            </MenuItem>
+          ))}
         </MenuList>
         <Divider sx={{ m: 2 }} />
         <MenuList>

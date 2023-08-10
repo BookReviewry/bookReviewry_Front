@@ -1,11 +1,11 @@
 'use client'
 import React from 'react'
-import styles from './Main.module.scss'
+import styles from './page.module.scss'
 import SubPageTitle from '@/components/SubPageTitle/SubPageTitle'
+import HorizontalArrowView from '@/components/HorizontalArrowView/HorizontalArrowView'
 import SearchBar from './subs/SearchBar'
 import MonthlyReviews from './subs/MonthlyReviews/MonthlyReviews'
 import HorizontalBookList from './subs/HorizontalBookList/HorizontalBookList'
-import HorizontalArrowView from '@/components/HorizontalArrowView/HorizontalArrowView'
 
 type Props = {}
 
