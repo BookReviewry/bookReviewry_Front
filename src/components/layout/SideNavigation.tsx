@@ -14,6 +14,7 @@ import { CATEGORY } from '@/constants/categories'
 
 const SideNavigation = () => {
   const { loginMember, isLogin, login, logout } = useAuth()
+  /* Navigation */
   const router = useRouter()
 
   useEffect(() => {
@@ -27,9 +28,6 @@ const SideNavigation = () => {
   const handleLogin = () => {
     router.push('https://bookreviewry-back-pmchm.run.goorm.io/oauth2/authorization/google')
   }
-
-  /* Navigation */
-  const router = useRouter()
 
   // category 화면 별로 searchParams 지정하여 보내주는 함수 - CATEGORY 활용
   const handleRouter = (pathname: string, param: { name: string; value: string }) => {
