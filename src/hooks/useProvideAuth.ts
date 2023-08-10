@@ -14,7 +14,7 @@ export const useProvideAuth = () => {
   }, [])
 
   const login = async (token: string) => {
-    const res = await fetch('/user/profile', {
+    const res = await fetch('/users/profile', {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
