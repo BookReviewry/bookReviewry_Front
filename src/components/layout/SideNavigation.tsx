@@ -8,9 +8,11 @@ import classes from './SideNavigation.module.scss'
 import GoogleIcon from '@/assets/image/button/btn_google_light_normal_ios.svg'
 import { env } from 'process'
 import { useAuth } from '@/hooks/useAuth'
+import { useRouter } from 'next/navigation'
 
 const SideNavigation = () => {
   const { loginMember, isLogin, login, logout } = useAuth()
+  const router = useRouter()
 
   useEffect(() => {
     //token 가져오기
@@ -21,7 +23,7 @@ const SideNavigation = () => {
   }, [])
 
   const handleLogin = () => {
-    location.href = env.BASE_URL + '/oauth2/authorization/google'
+    router.push('https://bookreviewry-back-pmchm.run.goorm.io/oauth2/authorization/google')
   }
 
   return (
