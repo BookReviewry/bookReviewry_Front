@@ -8,11 +8,13 @@ import { Box, Button, Divider, ListItemButton, ListItemText, MenuItem, MenuList,
 import { theme } from '@/assets/styles/theme'
 import GoogleIcon from '@/assets/image/button/btn_google_light_normal_ios.svg'
 import { useAuth } from '@/hooks/useAuth'
+import { useRouter } from 'next/navigation'
 import classes from './SideNavigation.module.scss'
 import { CATEGORY } from '@/constants/categories'
 
 const SideNavigation = () => {
   const { loginMember, isLogin, login, logout } = useAuth()
+  const router = useRouter()
 
   useEffect(() => {
     //token 가져오기
@@ -23,7 +25,7 @@ const SideNavigation = () => {
   }, [])
 
   const handleLogin = () => {
-    location.href = env.BASE_URL + '/oauth2/authorization/google'
+    router.push('https://bookreviewry-back-pmchm.run.goorm.io/oauth2/authorization/google')
   }
 
   /* Navigation */
