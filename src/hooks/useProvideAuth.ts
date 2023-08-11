@@ -11,7 +11,7 @@ export const useProvideAuth = () => {
   const router = useRouter()
 
   useEffect(() => {
-    setToken(getItem('JWT_KEY'))
+    const token = getItem('JWT_KEY')
     setIsLogin(!!token)
   }, [])
 
@@ -33,7 +33,11 @@ export const useProvideAuth = () => {
         const data = await res.json()
         setItem('JWT_KEY', token)
         setIsLogin(true)
-        setLoginMember(data)
+        setLoginMember({
+          memberId: data.email,
+          memberNm: data.name,
+          profileTxt: data.profile,
+        })
         router.push('/')
       } else {
         alert('로그인에 실패하셨습니다.')

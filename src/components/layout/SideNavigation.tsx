@@ -2,7 +2,6 @@
 
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { env } from 'process'
 import LocalLibraryRoundedIcon from '@mui/icons-material/LocalLibraryRounded'
 import { Box, Button, Divider, ListItemButton, ListItemText, MenuItem, MenuList, ThemeProvider } from '@/constants/useClient/mui'
 import { theme } from '@/assets/styles/theme'
@@ -36,6 +35,13 @@ const SideNavigation = () => {
     router.push(`${pathname}?${newParams}`)
   }
 
+  const handleClickMyBookShelvesMenu = () => {
+    if (!isLogin) {
+      return alert('로그인 후 이용해주세요')
+    }
+    router.push('/my-book-shelves')
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ width: '100%', maxWidth: 190, height: '100%', bgcolor: 'primary.main' }}>
@@ -61,7 +67,7 @@ const SideNavigation = () => {
         </MenuList>
         <Divider sx={{ m: 2 }} />
         <MenuList>
-          <MenuItem className={classes.menuItem}>
+          <MenuItem className={classes.menuItem} onClick={handleClickMyBookShelvesMenu}>
             <ListItemText primary='내 책장' />
           </MenuItem>
         </MenuList>

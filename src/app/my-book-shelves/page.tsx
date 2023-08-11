@@ -3,9 +3,11 @@ import React from 'react'
 
 const page = () => {
   const { loginMember } = useAuth()
-  const { email, name } = loginMember
+  const { memberId, memberNm, profileTxt } = loginMember
 
-  return <h1>{{ loginMember }}</h1>
+  console.log('memberNm:', loginMember)
+
+  return <h1>{memberNm}</h1>
 }
 
 export default page
