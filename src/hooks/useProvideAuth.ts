@@ -15,7 +15,7 @@ export const useProvideAuth = () => {
     setIsLogin(!!token)
   }, [])
 
-  const login = async (token: string) => {
+  const login = (token: string) => {
     if (token) {
       fetchProfile(token)
     }
@@ -35,6 +35,7 @@ export const useProvideAuth = () => {
         setIsLogin(true)
         setLoginMember(data)
       } else {
+        alert('로그인에 실패하셨습니다.')
         logout()
       }
     } catch (err) {
