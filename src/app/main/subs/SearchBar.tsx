@@ -11,7 +11,7 @@ import {
   ImageListItem,
   ThemeProvider,
   CircularProgress,
-} from '@/lib/useClient/mui'
+} from '@/constants/useClient/mui'
 import { Clear, Search } from '@mui/icons-material'
 import data from '../../../components/layout/DUMMY_BOOKS.json'
 import { theme } from '@/assets/styles/theme'
@@ -111,12 +111,7 @@ const SearchBar = () => {
         primary={book.title}
         secondary={
           <React.Fragment>
-            <Typography
-              sx={{ display: 'inline' }}
-              component='span'
-              variant='body2'
-              color='text.primary'
-            >
+            <Typography sx={{ display: 'inline' }} component='span' variant='body2' color='text.primary'>
               {book.author}
             </Typography>
           </React.Fragment>
@@ -126,21 +121,11 @@ const SearchBar = () => {
   ))
 
   const searchBarBtn = isFetched ? (
-    <IconButton
-      type='button'
-      sx={{ p: '10px' }}
-      aria-label='search'
-      onClick={clearBooks}
-    >
+    <IconButton type='button' sx={{ p: '10px' }} aria-label='search' onClick={clearBooks}>
       <Clear />
     </IconButton>
   ) : (
-    <IconButton
-      type='button'
-      sx={{ p: '10px' }}
-      aria-label='search'
-      onClick={fetchBooks}
-    >
+    <IconButton type='button' sx={{ p: '10px' }} aria-label='search' onClick={fetchBooks}>
       <Search />
     </IconButton>
   )
