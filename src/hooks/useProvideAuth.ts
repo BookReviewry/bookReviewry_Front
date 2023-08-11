@@ -34,6 +34,7 @@ export const useProvideAuth = () => {
         setItem('JWT_KEY', token)
         setIsLogin(true)
         setLoginMember(data)
+        router.push('/')
       } else {
         alert('로그인에 실패하셨습니다.')
         logout()
