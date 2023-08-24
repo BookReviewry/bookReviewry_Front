@@ -1,13 +1,16 @@
-import { useAuth } from '@/hooks/useAuth'
+'use client'
+
+import Profile from '@/components/profile/Profile'
+import { Box } from '@mui/material'
 import React from 'react'
 
 const page = () => {
-  const { loginMember } = useAuth()
-  const { memberId, memberNm, profileTxt } = loginMember
-
-  console.log('memberNm:', loginMember)
-
-  return <h1>{memberNm}</h1>
+  return (
+    <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+      <Profile />
+      <div>list</div>
+    </Box>
+  )
 }
 
 export default page

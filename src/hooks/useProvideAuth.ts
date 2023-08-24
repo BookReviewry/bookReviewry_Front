@@ -23,7 +23,7 @@ export const useProvideAuth = () => {
 
   const fetchProfile = async (token: string) => {
     try {
-      const res = await fetch('/users/profile', {
+      const res = await fetch('/api/users/profile', {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`,

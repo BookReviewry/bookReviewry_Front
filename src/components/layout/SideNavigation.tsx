@@ -7,7 +7,7 @@ import { Box, Button, Divider, ListItemButton, ListItemText, MenuItem, MenuList,
 import { theme } from '@/assets/styles/theme'
 import GoogleIcon from '@/assets/image/button/btn_google_light_normal_ios.svg'
 import { useAuth } from '@/hooks/useAuth'
-import classes from './SideNavigation.module.scss'
+import styles from './SideNavigation.module.scss'
 import { CATEGORY } from '@/constants/categories'
 
 const SideNavigation = () => {
@@ -36,38 +36,34 @@ const SideNavigation = () => {
   }
 
   const handleClickMyBookShelvesMenu = () => {
-    if (!isLogin) {
-      return alert('로그인 후 이용해주세요')
-    }
+    // if (!isLogin) {
+    //   return alert('로그인 후 이용해주세요')
+    // }
     router.push('/my-book-shelves')
   }
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ width: '100%', maxWidth: 190, height: '100%', bgcolor: 'primary.main' }}>
+      <Box sx={{ width: '100%', maxWidth: 190!, height: '100%', bgcolor: 'primary.main' }}>
         <MenuList>
           <ListItemButton alignItems='center' href='/' sx={{ mx: 2, mt: 2, mb: 4 }}>
             <LocalLibraryRoundedIcon />
             <ListItemText primary='bookreviewry' />
           </ListItemButton>
 
-          <MenuItem className={classes.menuItem} onClick={() => router.push('/')}>
+          <MenuItem className={styles.menuItem} onClick={() => router.push('/')}>
             <ListItemText primary='오픈 서재' />
           </MenuItem>
 
           {CATEGORY.map((item, index) => (
-            <MenuItem
-              key={index}
-              className={classes.menuItem}
-              onClick={() => handleRouter('/category', { name: 'type', value: item.code })}
-            >
+            <MenuItem key={index} className={styles.menuItem} onClick={() => handleRouter('/category', { name: 'type', value: item.code })}>
               <ListItemText secondary={item.type} />
             </MenuItem>
           ))}
         </MenuList>
         <Divider sx={{ m: 2 }} />
         <MenuList>
-          <MenuItem className={classes.menuItem} onClick={handleClickMyBookShelvesMenu}>
+          <MenuItem className={styles.menuItem} onClick={handleClickMyBookShelvesMenu}>
             <ListItemText primary='내 책장' />
           </MenuItem>
         </MenuList>
