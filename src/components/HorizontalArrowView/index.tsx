@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import styles from './HorizontalArrowView.module.scss'
+import styles from './index.module.scss'
 import { IconButton } from '@mui/material'
 import { ArrowForwardIos, ArrowBackIosNew } from '@mui/icons-material'
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import BookCover from '@/components/BookCover/BookCover'
+import BookCover from '@/components/BookCover'
 
 type Props = {}
 

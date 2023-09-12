@@ -1,9 +1,9 @@
 'use client'
 import React from 'react'
-import styles from './UserTag.module.css'
+import styles from './index.module.scss'
 
 type UserTagType = 'SIMPLE' | 'DETAIL'
-type Props = { userTagType: UserTagType }
+type Props = { userTagType: UserTagType; divStyle?: React.CSSProperties }
 
 const UserTag = (props: Props) => {
   //TODO: 추후 로그인 정보 혹은 리뷰작성자 정보를 가져와서 하기 prop을 바꿔줘야 함!
@@ -18,7 +18,7 @@ const UserTag = (props: Props) => {
   }
 
   return (
-    <div className={styles[props.userTagType.toLowerCase()]}>
+    <div className={styles[props.userTagType.toLowerCase()]} style={props.divStyle}>
       <img src={prop.profileImg} />
       <p className={styles.memberName}>{prop.memberName}</p>
 

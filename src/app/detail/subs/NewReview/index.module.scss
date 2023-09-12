@@ -1,0 +1,12 @@
+.outerDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f9fb;
+  box-shadow: 5px 10px 15px -10px #333333;
+  border-radius: 10px;
+  padding-inline: 15px;
+  padding-block: 15px;
+  font-size: 14px;
+  min-height: 100px;
+}

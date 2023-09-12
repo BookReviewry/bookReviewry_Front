@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import styles from './MainReview.module.scss'
-import Like from '@/components/Like/Like'
+import Like from '@/components/Like'
 
 type Props = { imgUrl: string; like: number; content: string }
 

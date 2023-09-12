@@ -2,8 +2,8 @@
 import React from 'react'
 import styles from './page.module.scss'
 import { useSearchParams } from 'next/navigation'
-import BookCover from '@/components/BookCover/BookCover'
-import SubPageTitle from '@/components/SubPageTitle/SubPageTitle'
+import BookCover from '@/components/BookCover'
+import SubPageTitle from '@/components/SubPageTitle'
 import { CATEGORY } from '@/constants/categories'
 
 import data from '@/components/layout/DUMMY_BOOKS.json'
