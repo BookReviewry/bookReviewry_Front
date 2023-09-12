@@ -3,12 +3,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   padding: 20px;
 }
 
 .bookInfo {
   margin-top: 30px;
   padding-inline: 10px;
+  max-width: 440.5px;
 }
 .avgRate {
   display: flex;
