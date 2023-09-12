@@ -15,8 +15,8 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/:path*',
-        destination: env.BASE_URL + '/:path*',
+        source: '/api/:path*',
+        destination: 'https://bookreviewry-back-pmchm.run.goorm.site/:path*',
       },
     ]
   },

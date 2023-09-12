@@ -1,0 +1,12 @@
+.book-count {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.edit-icon {
+  position: absolute;
+  bottom: 30px;
+  left: 140px;
+}
