@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import styles from './EmpathyRate.module.scss'
+import styles from './index.module.scss'
 import { Favorite, FavoriteBorder } from '@mui/icons-material'
 
 /**
@@ -25,13 +25,7 @@ const EmpathyRate = (props: Props) => {
 
   return (
     <div className={styles.container}>
-      {props.rate === 0 ? (
-        <FavoriteBorder style={{}} />
-      ) : (
-        <Favorite
-          style={{ marginRight: '5px', color: getRateColor(props.rate) }}
-        />
-      )}
+      {props.rate === 0 ? <FavoriteBorder style={{}} /> : <Favorite style={{ marginRight: '5px', color: getRateColor(props.rate) }} />}
       {`${props.rate}%`}
     </div>
   )

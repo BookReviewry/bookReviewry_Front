@@ -1,16 +1,18 @@
 'use client'
 import React from 'react'
-import styles from './BookCover.module.scss'
+import styles from './index.module.scss'
+import { useRouter } from 'next/navigation'
 
-import EmpathyRate from '../EmpathyRate/EmpathyRate'
+import EmpathyRate from '../EmpathyRate'
 
 type Props = { imgUrl: string; empathyRate?: number }
 
 const BookCover = (props: Props) => {
   const [isHovering, setIsHovering] = React.useState(false)
+  const router = useRouter()
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div style={{ position: 'relative' }} onClick={() => router.push('/detail')}>
       <img
         src={props.imgUrl}
         className={styles.bookCover}

@@ -15,6 +15,7 @@ import {
 import { Clear, Search } from '@mui/icons-material'
 import data from '../../../components/layout/DUMMY_BOOKS.json'
 import { theme } from '@/assets/styles/theme'
+import { Book } from '@/types/type'
 
 const SearchBar = () => {
   const [enteredValue, setEnteredValue] = useState('')
