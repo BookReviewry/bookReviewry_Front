@@ -1,6 +1,6 @@
 'use client'
 import React, { CSSProperties } from 'react'
-import styles from './SubPageTitle.module.scss'
+import styles from './index.module.scss'
 
 type Props = { title: string; barColor?: string; style?: CSSProperties }
 

@@ -6,7 +6,7 @@ export interface Member {
   createDate?: Date
 }
 
-type Book = {
+export type Book = {
   id: string
   isbn: string
   imgUrl: string
