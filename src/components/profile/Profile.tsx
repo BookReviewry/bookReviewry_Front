@@ -1,16 +1,17 @@
+'use client'
+
 import { Avatar, Box, Container, Divider, IconButton, TextField } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
 import CheckIcon from '@mui/icons-material/Check'
 import React, { useEffect, useRef, useState } from 'react'
-import { useAuth } from '@/hooks/useAuth'
 import styles from './profile.module.scss'
 import useFetch from '@/hooks/useFetch'
+import { Member } from '@/types/type'
 
-const Profile: React.FC<{ searchedUserId?: string }> = props => {
-  const { loginMember } = useAuth()
-  console.log('member:', loginMember.memberNm)
-  const { memberId, memberNm, profileTxt } = loginMember
-  const isLoginUser = !props.searchedUserId || memberId === props.searchedUserId
+const Profile: React.FC<{ userInfo: Member }> = props => {
+  const { memberId, memberNm, profileTxt } = props.userInfo
+  console.log('member:', memberNm)
+  const [isMyProfile, setIsMyProfile] = useState(false) //TODO: 남의 책장 접근 시 UI 다르게 처리해야함
   const [canEdit, setCanEdit] = useState(false)
   const profileInputRef = useRef<HTMLInputElement>(null)
 
@@ -18,11 +19,6 @@ const Profile: React.FC<{ searchedUserId?: string }> = props => {
     // 프로필 문구 세팅
     if (!!profileInputRef.current && !!profileTxt) profileInputRef.current.value = profileTxt
   }, [])
-
-  // TODO: [내 책장]이 아닐 경우, 해당 유저 프로필 가져옴(API 필요)
-  if (!isLoginUser) {
-    //searchedUserId로 프로필 불러오기
-  }
 
   const numberOfFollowers = 0
 
@@ -73,12 +69,12 @@ const Profile: React.FC<{ searchedUserId?: string }> = props => {
           </Box>
           <Box sx={{ mx: 2, height: 130 }}>
             <TextField inputRef={profileInputRef} disabled={!canEdit} variant='outlined' multiline rows={4} />
-            {isLoginUser && !canEdit && (
+            {isMyProfile && !canEdit && (
               <IconButton size='small' onClick={handleClickEditBtn} sx={{ position: 'alsolute', bottom: '30px', left: '140px' }}>
                 <EditIcon />
               </IconButton>
             )}
-            {isLoginUser && canEdit && (
+            {isMyProfile && canEdit && (
               <IconButton size='small' onClick={handleClickChkBtn} sx={{ position: 'alsolute', bottom: '30px', left: '140px' }}>
                 <CheckIcon />
               </IconButton>
