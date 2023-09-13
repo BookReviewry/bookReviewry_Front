@@ -10,7 +10,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className={styles.container}>
           <AuthContextProvider>
             <SideNavigation />
-            <main className={styles.main}>{children}</main>
+            {/* <main className={styles.main}>{children}</main> */}
+            {children}
           </AuthContextProvider>
         </div>
       </body>
