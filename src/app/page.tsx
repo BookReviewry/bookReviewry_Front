@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react'
 import '@/assets/styles/globals.scss'
 import Main from './main/page'
-import AuthContextProvider from '../store/auth-context'
 import { Metadata } from 'next'
 
 //use the Metadata API which automatically handles advanced requirements such as streaming and de-duplicating <head> elements.
@@ -19,13 +18,5 @@ export default function Home() {
     setMounted(true)
   }, [])
 
-  return (
-    <>
-      {mounted && (
-        <AuthContextProvider>
-          <Main />
-        </AuthContextProvider>
-      )}
-    </>
-  )
+  return <>{mounted && <Main />}</>
 }
