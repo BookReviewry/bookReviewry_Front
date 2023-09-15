@@ -8,9 +8,11 @@ import styles from './profile.module.scss'
 import useFetch from '@/hooks/useFetch'
 import { Member } from '@/types/type'
 
-const Profile: React.FC<{ userInfo: Member }> = props => {
+const Profile: React.FC<{ userInfo: Member; isMine?:boolean }> = props => {
   const { memberId, memberNm, profileTxt } = props.userInfo
+  const isMine = props.isMine
   console.log('member:', memberNm)
+  console.log('isMine:', isMine)
   const [isMyProfile, setIsMyProfile] = useState(false) //TODO: 남의 책장 접근 시 UI 다르게 처리해야함
   const [canEdit, setCanEdit] = useState(false)
   const profileInputRef = useRef<HTMLInputElement>(null)

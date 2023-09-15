@@ -39,7 +39,7 @@ const SideNavigation = () => {
     // if (!isLogin) {
     //   return alert('로그인 후 이용해주세요')
     // }
-    router.push('/my-book-shelves')
+    router.push(`/my-book-shelves/${loginMember.memberId}`)
   }
 
   return (
