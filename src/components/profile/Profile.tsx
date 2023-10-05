@@ -4,7 +4,7 @@ import { Avatar, Box, Container, Divider, IconButton, TextField } from '@mui/mat
 import EditIcon from '@mui/icons-material/Edit'
 import CheckIcon from '@mui/icons-material/Check'
 import React, { useEffect, useRef, useState } from 'react'
-import styles from './profile.module.scss'
+import styles from './Profile.module.scss'
 import useFetch from '@/hooks/useFetch'
 import { Member } from '@/types/type'
 
