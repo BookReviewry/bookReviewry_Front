@@ -157,6 +157,7 @@ const SearchBar = () => {
       {isFetched && (
         <List
           sx={{
+            zIndex: 5,
             position: 'fixed',
             left: 250,
             top: 80,
