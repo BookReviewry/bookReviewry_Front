@@ -8,9 +8,10 @@ type Props = {}
 
 const NewReview = (props: Props) => {
   const [rate, setRate] = React.useState(0)
-  function valuetext(value: number) {
-    setRate(value)
-    return `${value}%`
+  const [reviewContent, setReviewContent] = React.useState('')
+
+  const handleSliderChange = (event: Event, newValue: number | number[]) => {
+    setRate(newValue as number)
   }
 
   return (
@@ -29,12 +30,26 @@ const NewReview = (props: Props) => {
               marginBottom: '-8px',
             }}
           />
-          <Slider defaultValue={30} getAriaValueText={valuetext} valueLabelDisplay='auto' step={10} marks min={0} max={100} />
+          <Slider defaultValue={0} onChange={handleSliderChange} valueLabelDisplay='auto' step={10} marks min={0} max={100} />
         </div>
       </div>
-      <TextField variant='outlined' fullWidth multiline rows={2} placeholder={`리뷰 작성...`} />
+      <TextField
+        variant='outlined'
+        fullWidth
+        multiline
+        rows={2}
+        placeholder={`리뷰 작성...`}
+        value={reviewContent}
+        onChange={e => setReviewContent(e.target.value)}
+      />
       <div style={{ display: 'flex', justifyContent: 'flex-end', width: '100%', marginTop: 10 }}>
-        <Button variant='contained' sx={{ paddingInline: 3, borderRadius: 5 }}>
+        <Button
+          variant='contained'
+          sx={{ paddingInline: 3, borderRadius: 5 }}
+          onClick={() => {
+            console.log('---- [작성] 버튼 클릭 -----', rate, reviewContent)
+          }}
+        >
           작성
         </Button>
       </div>

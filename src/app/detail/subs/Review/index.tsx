@@ -25,8 +25,10 @@ const Review = (props: Props) => {
       </div>
 
       <textarea
+        readOnly
         className={styles.reviewContent}
-      >{`리뷰는 리뷰이고, 테스트는 테스트로다.${'\n'}수정할 수 없지롱 케케ㅔ케${'\n'}글씨가 너무 큰가요?`}</textarea>
+        defaultValue={`테스트를 위한 리뷰입니다.${'\n'}이미 작성된 리뷰를 불러올 것이므로 수정이 불가합니다.${'\n'}하지만 로그인한 유저가 작성자라면 수정이 가능하게끔 할 예정입니다.`}
+      />
     </div>
   )
 }
