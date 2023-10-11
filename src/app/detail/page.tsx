@@ -9,11 +9,11 @@ type Props = {}
 
 const Detail = (props: Props) => {
   return (
-    <div style={{ display: 'flex', maxHeight: '60%' }}>
+    <div style={{ display: 'flex', maxHeight: '65%', alignSelf: 'center', alignItems: 'flex-start' }}>
       <div className={styles.bookDetail}>
         <img
           src={'https://qi-b.qoo10cdn.com/partner/goods_image/3/8/5/6/356753856g.jpg'}
-          style={{ borderRadius: 20, maxHeight: '500px', maxWidth: '350px' }}
+          style={{ borderRadius: 20, maxHeight: '450px', maxWidth: '300px' }}
         />
 
         <div className={styles.bookInfo}>
@@ -23,7 +23,7 @@ const Detail = (props: Props) => {
           </div>
           <div style={{ marginTop: 20 }}>
             <p className={styles.bookTitle}>철학자의 행복론</p>
-            <p className={styles.author}>양앗취</p>
+            <p className={styles.author}>김형석</p>
           </div>
           <div
             className={styles.description}

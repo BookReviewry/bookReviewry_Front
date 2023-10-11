@@ -4,11 +4,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding-inline: 20px;
 }
 
 .bookInfo {
-  margin-top: 30px;
+  margin-top: 20px;
   padding-inline: 10px;
   max-width: 440.5px;
 }
@@ -45,6 +45,8 @@
 
 .reviewDiv {
   flex: 1;
+  min-height: 675px;
+  height: 100%;
   padding: 20px;
   background-color: #f1f1f1;
 }
